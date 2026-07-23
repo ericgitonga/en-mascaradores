@@ -5,13 +5,22 @@ who moonlight doing the blue-collar work they're actually passionate about
 (car maintenance, plumbing, electrical). For now, this repo is just the
 landing page; scope may grow later.
 
-## Status
+## Stack
 
-Pre-implementation. See issue #1 for the design/tech spike that will decide
-the actual stack and page structure.
+Next.js (App Router, TypeScript, Tailwind CSS). Picked for a simple
+content-driven page today with room to grow without a rewrite.
+
+## Run locally
+
+```bash
+npm install
+npm run dev
+```
+
+Opens on `http://localhost:3000`.
 
 ## Deployment
 
-Will run on [Vercel](https://vercel.com), same general setup as
+Runs on [Vercel](https://vercel.com), same general setup as
 [merch-mockup](https://github.com/ericgitonga/merch-mockup): every PR gets
 a Preview deployment, merging to `main` promotes to production.
