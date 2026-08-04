@@ -47,6 +47,14 @@ const TEAM: TeamMember[] = [
     codename: "The Fuser",
     bio: "Half art, half circuitry. Approaches every job like a design problem worth getting right.",
   },
+  {
+    codename: "Herb",
+    bio: "Solar PV engineer who moonlights on electrical installations and the e-mobility wave. Farms on the side, and always has advice for whoever needs a nudge forward.",
+  },
+  {
+    codename: "The Tinkerer",
+    bio: "Still finishing his electronics engineering degree, already happier with a multimeter than a textbook. Takes gadgets apart to see how they break, then builds them back better.",
+  },
 ];
 
 const PARTNERS = ["South Ring Motors", "Kioge Spares", "Asendi Spares", "GariScan"];
