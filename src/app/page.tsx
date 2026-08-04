@@ -23,7 +23,11 @@ const SERVICES: Service[] = [
 
 type TeamMember = {
   codename: string;
-  bio: string;
+  bio?: string;
+  education?: string;
+  whiteCollar?: string;
+  blueCollar?: string;
+  quote?: string;
 };
 
 const TEAM: TeamMember[] = [
@@ -37,7 +41,13 @@ const TEAM: TeamMember[] = [
   },
   {
     codename: "The Catalyst",
-    bio: "A chemist who can't stop optimizing systems — including yours. Precise, methodical, allergic to sloppy work.",
+    education: "BSc. Industrial Chemistry, JKUAT.",
+    whiteCollar:
+      "R&D Chemist / Product Development Lead, currently formulating an in-house beverage and running quality systems tight enough to survive back-to-back audits at Sobetra Uganda Ltd.",
+    blueCollar:
+      "Founder, EliteShield Cleaning and Fumigation Services, quietly making sure Nairobi's homes and offices stay pest-free and spotless when the lab coat comes off.",
+    quote:
+      "“Formulates products by day, fumigates problems by night. Same instinct either way: find what's contaminating the system, and eliminate it.”",
   },
   {
     codename: "Tactician",
@@ -46,6 +56,13 @@ const TEAM: TeamMember[] = [
   {
     codename: "The Fuser",
     bio: "Half art, half circuitry. Approaches every job like a design problem worth getting right.",
+  },
+  {
+    codename: "Herb",
+    education: "BEng. Electrical & Electronics Engineering.",
+    whiteCollar: "Renewable Energy, Solar PV C&I industry.",
+    blueCollar:
+      "Electrical installations and E-mobility enthusiast, farming, personal development guider.",
   },
 ];
 
@@ -135,7 +152,37 @@ export default function Home() {
             {TEAM.map((member) => (
               <div key={member.codename} className="rounded-lg border border-slate-200 p-6">
                 <h3 className="text-lg font-semibold text-slate-900">{member.codename}</h3>
-                <p className="mt-2 text-sm leading-6 text-slate-600">{member.bio}</p>
+                {member.bio ? (
+                  <p className="mt-2 text-sm leading-6 text-slate-600">{member.bio}</p>
+                ) : (
+                  <>
+                    <dl className="mt-2 space-y-2 text-sm leading-6 text-slate-600">
+                      {member.education && (
+                        <div>
+                          <dt className="font-medium text-slate-900">Education</dt>
+                          <dd>{member.education}</dd>
+                        </div>
+                      )}
+                      {member.whiteCollar && (
+                        <div>
+                          <dt className="font-medium text-slate-900">White collar</dt>
+                          <dd>{member.whiteCollar}</dd>
+                        </div>
+                      )}
+                      {member.blueCollar && (
+                        <div>
+                          <dt className="font-medium text-slate-900">Blue collar</dt>
+                          <dd>{member.blueCollar}</dd>
+                        </div>
+                      )}
+                    </dl>
+                    {member.quote && (
+                      <p className="mt-3 border-l-2 border-amber-500 pl-3 text-sm italic text-slate-500">
+                        {member.quote}
+                      </p>
+                    )}
+                  </>
+                )}
               </div>
             ))}
           </div>
