@@ -183,7 +183,7 @@ function TeamMemberModal({
   );
 }
 
-type PartnerLinkPlatform = "instagram" | "facebook" | "website";
+type PartnerLinkPlatform = "instagram" | "facebook" | "twitter" | "website";
 
 type PartnerLink = {
   platform: PartnerLinkPlatform;
@@ -193,6 +193,7 @@ type PartnerLink = {
 const PARTNER_LINK_LABELS: Record<PartnerLinkPlatform, string> = {
   instagram: "Instagram",
   facebook: "Facebook",
+  twitter: "Twitter",
   website: "Website",
 };
 
@@ -214,28 +215,50 @@ function FacebookIcon() {
   );
 }
 
+function TwitterIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
+      <path d="M18.9 3h3.1l-6.77 7.73L23.5 21h-6.36l-4.98-6.52L6.4 21H3.3l7.24-8.27L2.5 3h6.52l4.5 5.95L18.9 3Zm-1.09 16.17h1.72L7.28 4.74H5.44l12.37 14.43Z" />
+    </svg>
+  );
+}
+
 function PartnerLinkIcon({ platform }: { platform: PartnerLinkPlatform }) {
   if (platform === "instagram") return <InstagramIcon />;
   if (platform === "facebook") return <FacebookIcon />;
+  if (platform === "twitter") return <TwitterIcon />;
   return null;
 }
 
 type Partner = {
   name: string;
   logoSrc?: string;
+  logoWidth?: number;
+  logoHeight?: number;
   description?: string;
   links?: PartnerLink[];
 };
 
 const PARTNERS: Partner[] = [
   {
-    name: "South Ring Motors",
+    name: "South Ring Autos",
+    logoSrc: "/partners/south-ring-autos.png",
+    logoWidth: 551,
+    logoHeight: 453,
     description:
       "When your car needs special attention and needs works done at a garage, we have partnered with South Rings as our go to garage.",
+    links: [
+      { platform: "instagram", href: "https://www.instagram.com/southring_autos/" },
+      { platform: "facebook", href: "https://www.facebook.com/southringautos" },
+      { platform: "twitter", href: "https://x.com/southringautos" },
+      { platform: "website", href: "https://www.southringautos.com/" },
+    ],
   },
   {
     name: "Finch Auto",
     logoSrc: "/partners/finch-auto.png",
+    logoWidth: 400,
+    logoHeight: 101,
     description: "For genuine service parts and specifically those for German Machines.",
     links: [
       { platform: "instagram", href: "https://www.instagram.com/finchautoparts/" },
@@ -245,8 +268,16 @@ const PARTNERS: Partner[] = [
   { name: "Asendi Spares" },
   {
     name: "GariScan",
+    logoSrc: "/partners/gariscan.png",
+    logoWidth: 1592,
+    logoHeight: 518,
     description:
       "Need to monitor your car essentials without having to call for expensive diagnostics? GariScan is your first point of contact. A plug and play Bluetooth Scanner.",
+    links: [
+      { platform: "instagram", href: "https://www.instagram.com/gariscanapp" },
+      { platform: "twitter", href: "https://x.com/GariScanApp" },
+      { platform: "website", href: "https://gariscan.com/" },
+    ],
   },
 ];
 
@@ -414,8 +445,9 @@ export default function Home() {
                   <Image
                     src={partner.logoSrc}
                     alt={partner.name}
-                    width={127}
-                    height={32}
+                    width={partner.logoWidth ?? 127}
+                    height={partner.logoHeight ?? 32}
+                    className="h-8 w-auto"
                   />
                 ) : (
                   <span className="text-base font-medium text-slate-700">

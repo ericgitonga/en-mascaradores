@@ -25,6 +25,23 @@ def test_partner_with_info_opens_modal_with_description_and_links():
         assert facebook.get_attribute("href") == "https://www.facebook.com/finchautoparts/"
 
 
+def test_website_link_is_last():
+    with browser_page() as page:
+        page.goto("/")
+        page.get_by_role("button", name="South Ring Autos", exact=False).click()
+
+        modal = page.get_by_role("dialog")
+        links = modal.get_by_role("link").all()
+        assert [link.get_attribute("aria-label") for link in links] == [
+            "Instagram",
+            "Facebook",
+            "Twitter",
+            "Website",
+        ]
+        assert links[-1].get_attribute("href") == "https://www.southringautos.com/"
+        assert links[-1].inner_text() == "Website"
+
+
 def test_partner_without_info_opens_empty_modal():
     with browser_page() as page:
         page.goto("/")
@@ -48,6 +65,7 @@ def test_partner_modal_closes_on_escape():
 TESTS = [
     test_partners_intro_paragraph,
     test_partner_with_info_opens_modal_with_description_and_links,
+    test_website_link_is_last,
     test_partner_without_info_opens_empty_modal,
     test_partner_modal_closes_on_escape,
 ]
