@@ -6,6 +6,18 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 adheres to [Semantic Versioning](https://semver.org) (pre-1.0: MINOR = new features/user-facing
 behaviour, PATCH = fixes/docs/housekeeping).
 
+## [0.6.0] - 2026-08-04
+
+### Added
+
+- Partners section now opens a detail modal on click (logo or name), reusing
+  the same modal chrome as team members. Adds an intro paragraph above the
+  partner list, and shows each partner's description with any links (e.g.
+  Instagram, Facebook) last. Partners without info get an empty modal
+  (closes #20)
+
+tag: `v0.6.0`
+
 ## [0.5.0] - 2026-08-04
 
 ### Added

@@ -117,12 +117,14 @@ const TEAM_DETAIL_FIELDS: Array<{
   { label: "Defining Quote", key: "definingQuote" },
 ];
 
-function TeamMemberModal({
-  member,
+function Modal({
+  label,
   onClose,
+  children,
 }: {
-  member: TeamMember;
+  label: string;
   onClose: () => void;
+  children: React.ReactNode;
 }) {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -140,7 +142,7 @@ function TeamMemberModal({
       <div
         role="dialog"
         aria-modal="true"
-        aria-label={member.codename}
+        aria-label={label}
         className="relative max-h-[85vh] w-full max-w-lg overflow-y-auto rounded-lg bg-white p-6 shadow-xl"
         onClick={(event) => event.stopPropagation()}
       >
@@ -152,42 +154,170 @@ function TeamMemberModal({
         >
           &times;
         </button>
-        <div className="space-y-4 pr-6">
-          {TEAM_DETAIL_FIELDS.map(({ label, key }) => {
-            const value = member[key];
-            if (!value) return null;
-            return (
-              <p key={key} className="text-sm leading-6 text-slate-600">
-                <span className="font-bold text-slate-900">{label}: </span>
-                {value}
-              </p>
-            );
-          })}
-        </div>
+        <div className="space-y-4 pr-6">{children}</div>
       </div>
     </div>
   );
 }
 
+function TeamMemberModal({
+  member,
+  onClose,
+}: {
+  member: TeamMember;
+  onClose: () => void;
+}) {
+  return (
+    <Modal label={member.codename} onClose={onClose}>
+      {TEAM_DETAIL_FIELDS.map(({ label, key }) => {
+        const value = member[key];
+        if (!value) return null;
+        return (
+          <p key={key} className="text-sm leading-6 text-slate-600">
+            <span className="font-bold text-slate-900">{label}: </span>
+            {value}
+          </p>
+        );
+      })}
+    </Modal>
+  );
+}
+
+type PartnerLinkPlatform = "instagram" | "facebook" | "twitter" | "website";
+
+type PartnerLink = {
+  platform: PartnerLinkPlatform;
+  href: string;
+};
+
+const PARTNER_LINK_LABELS: Record<PartnerLinkPlatform, string> = {
+  instagram: "Instagram",
+  facebook: "Facebook",
+  twitter: "Twitter",
+  website: "Website",
+};
+
+function InstagramIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-5 w-5">
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r="0.75" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+function FacebookIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
+      <path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12Z" />
+    </svg>
+  );
+}
+
+function TwitterIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
+      <path d="M18.9 3h3.1l-6.77 7.73L23.5 21h-6.36l-4.98-6.52L6.4 21H3.3l7.24-8.27L2.5 3h6.52l4.5 5.95L18.9 3Zm-1.09 16.17h1.72L7.28 4.74H5.44l12.37 14.43Z" />
+    </svg>
+  );
+}
+
+function PartnerLinkIcon({ platform }: { platform: PartnerLinkPlatform }) {
+  if (platform === "instagram") return <InstagramIcon />;
+  if (platform === "facebook") return <FacebookIcon />;
+  if (platform === "twitter") return <TwitterIcon />;
+  return null;
+}
+
 type Partner = {
   name: string;
   logoSrc?: string;
-  href?: string;
+  logoWidth?: number;
+  logoHeight?: number;
+  description?: string;
+  links?: PartnerLink[];
 };
 
 const PARTNERS: Partner[] = [
-  { name: "South Ring Motors" },
+  {
+    name: "South Ring Autos",
+    logoSrc: "/partners/south-ring-autos.png",
+    logoWidth: 551,
+    logoHeight: 453,
+    description:
+      "When your car needs special attention and needs works done at a garage, we have partnered with South Rings as our go to garage.",
+    links: [
+      { platform: "instagram", href: "https://www.instagram.com/southring_autos/" },
+      { platform: "facebook", href: "https://www.facebook.com/southringautos" },
+      { platform: "twitter", href: "https://x.com/southringautos" },
+      { platform: "website", href: "https://www.southringautos.com/" },
+    ],
+  },
   {
     name: "Finch Auto",
     logoSrc: "/partners/finch-auto.png",
-    href: "https://www.instagram.com/finchautoparts/",
+    logoWidth: 400,
+    logoHeight: 101,
+    description: "For genuine service parts and specifically those for German Machines.",
+    links: [
+      { platform: "instagram", href: "https://www.instagram.com/finchautoparts/" },
+      { platform: "facebook", href: "https://www.facebook.com/finchautoparts/" },
+    ],
   },
   { name: "Asendi Spares" },
-  { name: "GariScan" },
+  {
+    name: "GariScan",
+    logoSrc: "/partners/gariscan.png",
+    logoWidth: 1592,
+    logoHeight: 518,
+    description:
+      "Need to monitor your car essentials without having to call for expensive diagnostics? GariScan is your first point of contact. A plug and play Bluetooth Scanner.",
+    links: [
+      { platform: "instagram", href: "https://www.instagram.com/gariscanapp" },
+      { platform: "twitter", href: "https://x.com/GariScanApp" },
+      { platform: "website", href: "https://gariscan.com/" },
+    ],
+  },
 ];
+
+function PartnerModal({
+  partner,
+  onClose,
+}: {
+  partner: Partner;
+  onClose: () => void;
+}) {
+  return (
+    <Modal label={partner.name} onClose={onClose}>
+      <h3 className="text-lg font-semibold text-slate-900">{partner.name}</h3>
+      {partner.description && (
+        <p className="text-sm leading-6 text-slate-600">{partner.description}</p>
+      )}
+      {partner.links && partner.links.length > 0 && (
+        <div className="flex items-center gap-4">
+          {partner.links.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={PARTNER_LINK_LABELS[link.platform]}
+              className="flex items-center gap-1.5 font-medium text-amber-600 hover:text-amber-500"
+            >
+              <PartnerLinkIcon platform={link.platform} />
+              {link.platform === "website" && PARTNER_LINK_LABELS.website}
+            </a>
+          ))}
+        </div>
+      )}
+    </Modal>
+  );
+}
 
 export default function Home() {
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
+  const [selectedPartner, setSelectedPartner] = useState<Partner | null>(null);
 
   return (
     <div className="flex flex-col flex-1 font-sans">
@@ -298,31 +428,34 @@ export default function Home() {
           <h2 className="text-2xl font-semibold tracking-tight text-slate-900">
             Our partners
           </h2>
-          <div className="mt-8 flex flex-wrap items-center gap-x-10 gap-y-4">
-            {PARTNERS.map((partner) =>
-              partner.logoSrc ? (
-                <a
-                  key={partner.name}
-                  href={partner.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+          <p className="mt-4 max-w-2xl text-base leading-7 text-slate-600">
+            This is the list of trusted partners we also work with. From car
+            accessories to service parts. They have proven to deliver in
+            terms of quality and that is why we work with them.
+          </p>
+          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
+            {PARTNERS.map((partner) => (
+              <button
+                key={partner.name}
+                type="button"
+                onClick={() => setSelectedPartner(partner)}
+                className="rounded-lg px-4 py-3 transition-colors hover:bg-white hover:shadow-sm"
+              >
+                {partner.logoSrc ? (
                   <Image
                     src={partner.logoSrc}
                     alt={partner.name}
-                    width={127}
-                    height={32}
+                    width={partner.logoWidth ?? 127}
+                    height={partner.logoHeight ?? 32}
+                    className="h-8 w-auto"
                   />
-                </a>
-              ) : (
-                <span
-                  key={partner.name}
-                  className="text-base font-medium text-slate-700"
-                >
-                  {partner.name}
-                </span>
-              ),
-            )}
+                ) : (
+                  <span className="text-base font-medium text-slate-700">
+                    {partner.name}
+                  </span>
+                )}
+              </button>
+            ))}
           </div>
         </div>
       </section>
@@ -352,6 +485,13 @@ export default function Home() {
         <TeamMemberModal
           member={selectedMember}
           onClose={() => setSelectedMember(null)}
+        />
+      )}
+
+      {selectedPartner && (
+        <PartnerModal
+          partner={selectedPartner}
+          onClose={() => setSelectedPartner(null)}
         />
       )}
     </div>
