@@ -6,6 +6,15 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 adheres to [Semantic Versioning](https://semver.org) (pre-1.0: MINOR = new features/user-facing
 behaviour, PATCH = fixes/docs/housekeeping).
 
+## [0.4.1] - 2026-08-04
+
+### Fixed
+
+- Contact button now emails `gitonga@gmail.com` instead of the placeholder
+  `hello@enmascaradores.example` it shipped with (closes #15)
+
+tag: `v0.4.1`
+
 ## [0.4.0] - 2026-08-04
 
 ### Changed

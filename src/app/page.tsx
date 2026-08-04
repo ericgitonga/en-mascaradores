@@ -217,10 +217,10 @@ export default function Home() {
             Reach out and we&apos;ll get back to you on our next working day.
           </p>
           <a
-            href="mailto:hello@enmascaradores.example"
+            href="mailto:gitonga@gmail.com"
             className="mt-8 inline-flex items-center justify-center rounded-full bg-amber-500 px-6 py-3 text-base font-medium text-slate-900 transition-colors hover:bg-amber-400"
           >
-            hello@enmascaradores.example
+            gitonga@gmail.com
           </a>
         </div>
       </section>
