@@ -117,12 +117,14 @@ const TEAM_DETAIL_FIELDS: Array<{
   { label: "Defining Quote", key: "definingQuote" },
 ];
 
-function TeamMemberModal({
-  member,
+function Modal({
+  label,
   onClose,
+  children,
 }: {
-  member: TeamMember;
+  label: string;
   onClose: () => void;
+  children: React.ReactNode;
 }) {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -140,7 +142,7 @@ function TeamMemberModal({
       <div
         role="dialog"
         aria-modal="true"
-        aria-label={member.codename}
+        aria-label={label}
         className="relative max-h-[85vh] w-full max-w-lg overflow-y-auto rounded-lg bg-white p-6 shadow-xl"
         onClick={(event) => event.stopPropagation()}
       >
@@ -152,42 +154,102 @@ function TeamMemberModal({
         >
           &times;
         </button>
-        <div className="space-y-4 pr-6">
-          {TEAM_DETAIL_FIELDS.map(({ label, key }) => {
-            const value = member[key];
-            if (!value) return null;
-            return (
-              <p key={key} className="text-sm leading-6 text-slate-600">
-                <span className="font-bold text-slate-900">{label}: </span>
-                {value}
-              </p>
-            );
-          })}
-        </div>
+        <div className="space-y-4 pr-6">{children}</div>
       </div>
     </div>
   );
 }
 
+function TeamMemberModal({
+  member,
+  onClose,
+}: {
+  member: TeamMember;
+  onClose: () => void;
+}) {
+  return (
+    <Modal label={member.codename} onClose={onClose}>
+      {TEAM_DETAIL_FIELDS.map(({ label, key }) => {
+        const value = member[key];
+        if (!value) return null;
+        return (
+          <p key={key} className="text-sm leading-6 text-slate-600">
+            <span className="font-bold text-slate-900">{label}: </span>
+            {value}
+          </p>
+        );
+      })}
+    </Modal>
+  );
+}
+
+type PartnerLink = {
+  label: string;
+  href: string;
+};
+
 type Partner = {
   name: string;
   logoSrc?: string;
-  href?: string;
+  description?: string;
+  links?: PartnerLink[];
 };
 
 const PARTNERS: Partner[] = [
-  { name: "South Ring Motors" },
+  {
+    name: "South Ring Motors",
+    description:
+      "When your car needs special attention and needs works done at a garage, we have partnered with South Rings as our go to garage.",
+  },
   {
     name: "Finch Auto",
     logoSrc: "/partners/finch-auto.png",
-    href: "https://www.instagram.com/finchautoparts/",
+    description: "For genuine service parts and specifically those for German Machines.",
+    links: [
+      { label: "Instagram", href: "https://www.instagram.com/finchautoparts/" },
+      { label: "Facebook", href: "https://www.facebook.com/finchautoparts/" },
+    ],
   },
   { name: "Asendi Spares" },
-  { name: "GariScan" },
+  {
+    name: "GariScan",
+    description:
+      "Need to monitor your car essentials without having to call for expensive diagnostics? GariScan is your first point of contact. A plug and play Bluetooth Scanner.",
+  },
 ];
+
+function PartnerModal({
+  partner,
+  onClose,
+}: {
+  partner: Partner;
+  onClose: () => void;
+}) {
+  return (
+    <Modal label={partner.name} onClose={onClose}>
+      <h3 className="text-lg font-semibold text-slate-900">{partner.name}</h3>
+      {partner.description && (
+        <p className="text-sm leading-6 text-slate-600">{partner.description}</p>
+      )}
+      {partner.links?.map((link) => (
+        <p key={link.href} className="text-sm leading-6">
+          <a
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium text-amber-600 hover:text-amber-500"
+          >
+            {link.label}
+          </a>
+        </p>
+      ))}
+    </Modal>
+  );
+}
 
 export default function Home() {
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
+  const [selectedPartner, setSelectedPartner] = useState<Partner | null>(null);
 
   return (
     <div className="flex flex-col flex-1 font-sans">
@@ -298,31 +360,33 @@ export default function Home() {
           <h2 className="text-2xl font-semibold tracking-tight text-slate-900">
             Our partners
           </h2>
+          <p className="mt-4 max-w-2xl text-base leading-7 text-slate-600">
+            This is the list of trusted partners we also work with. From car
+            accessories to service parts. They have proven to deliver in
+            terms of quality and that is why we work with them.
+          </p>
           <div className="mt-8 flex flex-wrap items-center gap-x-10 gap-y-4">
-            {PARTNERS.map((partner) =>
-              partner.logoSrc ? (
-                <a
-                  key={partner.name}
-                  href={partner.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+            {PARTNERS.map((partner) => (
+              <button
+                key={partner.name}
+                type="button"
+                onClick={() => setSelectedPartner(partner)}
+                className="rounded transition-opacity hover:opacity-75"
+              >
+                {partner.logoSrc ? (
                   <Image
                     src={partner.logoSrc}
                     alt={partner.name}
                     width={127}
                     height={32}
                   />
-                </a>
-              ) : (
-                <span
-                  key={partner.name}
-                  className="text-base font-medium text-slate-700"
-                >
-                  {partner.name}
-                </span>
-              ),
-            )}
+                ) : (
+                  <span className="text-base font-medium text-slate-700">
+                    {partner.name}
+                  </span>
+                )}
+              </button>
+            ))}
           </div>
         </div>
       </section>
@@ -352,6 +416,13 @@ export default function Home() {
         <TeamMemberModal
           member={selectedMember}
           onClose={() => setSelectedMember(null)}
+        />
+      )}
+
+      {selectedPartner && (
+        <PartnerModal
+          partner={selectedPartner}
+          onClose={() => setSelectedPartner(null)}
         />
       )}
     </div>
