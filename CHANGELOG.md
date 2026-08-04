@@ -6,6 +6,16 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 adheres to [Semantic Versioning](https://semver.org) (pre-1.0: MINOR = new features/user-facing
 behaviour, PATCH = fixes/docs/housekeeping).
 
+## [0.3.0] - 2026-08-04
+
+### Added
+
+- Logo in the site header, next to the wordmark — sourced from the gitignored
+  `extras/Logo.png`, resized to 512x512 and optimized into `public/logo.png` for web use
+  (closes #11)
+
+tag: `v0.3.0`
+
 ## [0.2.0] - 2026-08-04
 
 ### Added

@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 type Service = {
   title: string;
   description: string;
@@ -64,7 +66,10 @@ export default function Home() {
     <div className="flex flex-col flex-1 font-sans">
       <header className="bg-slate-900 text-white">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-5">
-          <span className="text-lg font-semibold tracking-tight">En Mascaradores</span>
+          <div className="flex items-center gap-2">
+            <Image src="/logo.png" alt="En Mascaradores logo" width={48} height={48} />
+            <span className="text-lg font-semibold tracking-tight">En Mascaradores</span>
+          </div>
           <a
             href="#contact"
             className="rounded-full bg-amber-500 px-4 py-2 text-sm font-medium text-slate-900 transition-colors hover:bg-amber-400"
