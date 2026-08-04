@@ -104,6 +104,26 @@ const TEAM: TeamMember[] = [
     definingQuote:
       "\"I don't just use technology—I want to know why it works, how it breaks, and how to build it even better.\"",
   },
+  {
+    codename: "El Nino",
+    bio: "Computer nerd deep in Linux and engineering by day, pianist and poet the rest of the time. Lately hooked on engines, electric cars, and motorcycles.",
+    education: "Bsc. Computer Science.",
+    whiteCollarCareer:
+      "A full-time computer nerd deep in engineering and Linux, part-time pianist, part-time poet, and athlete.",
+    blueCollarPassion:
+      "He has lately developed an unhealthy obsession with engines, electric cars, and motorcycles. He's currently working in and out of garages and boutique electrical installations, and anywhere else his passions lead him.",
+  },
+  {
+    codename: "d3eikei",
+    bio: "Full-stack developer with a petrolhead's heart — builder behind G1ZMO, grease-stained veteran of Strathmore's Formula Student team, and an open-road wanderer with a camera in hand.",
+    education: "BSc. Informatics and Computer Science",
+    whiteCollarCareer:
+      "Full-Stack Software Developer. By day, he masquerades as a modern digital architect, spinning high-level syntax into seamless software products.",
+    blueCollarPassion:
+      "While his head might be in the cloud, his pulse is decidedly mechanical. Strip away the user interfaces and databases, and you'll find a man whose true passion lies in the bare metal — an engine for a heart, and a dyed-in-the-wool petrolhead since childhood. He is the proud, hands-on mastermind behind G1ZMO, his meticulously crafted EP-91 Glanza S project (#SaveTheTwoDoors), and has earned his grease-stained stripes deep in the mechanical and powertrain trenches of the Strathmore Formula Student (FS) racing team. When he isn't turning wrenches or compiling code, he's out chasing the horizon — armed with a Nikon D3400, he roams the wild, hunting for the perfect shot. A true connoisseur of the open road, his downtime is fueled by a steady diet of nature, steep hikes, spontaneous road trips, and a killer soundtrack.",
+    definingQuote:
+      "\"Always effortlessly shifting gears between the soft and the hard wares.\"",
+  },
 ];
 
 const TEAM_DETAIL_FIELDS: Array<{
