@@ -50,3 +50,6 @@ SKILL.md
 ONBOARDING.md
 .claude/
 .agents/
+
+# python e2e suite
+e2e/__pycache__/

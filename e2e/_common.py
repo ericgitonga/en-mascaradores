@@ -23,7 +23,7 @@ from playwright.sync_api import sync_playwright
 
 BASE_URL = os.environ.get("BASE_URL", "http://localhost:3000").rstrip("/")
 
-CONTACT_EMAIL = "hello@enmascaradores.example"
+CONTACT_EMAIL = "gitonga@gmail.com"
 
 
 @contextmanager
