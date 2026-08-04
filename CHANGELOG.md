@@ -10,13 +10,8 @@ behaviour, PATCH = fixes/docs/housekeeping).
 
 ### Added
 
-- Two new team profiles, and a richer structured format (education, white-collar career,
-  blue-collar hustle, quote) for members who have one: "Herb" and "The Catalyst" (closes #7)
-
-### Changed
-
-- `TeamMember` bio is now optional — a member can have either a plain `bio` or the structured
-  fields above; the team card renders whichever is present
+- Two new team profiles, "Herb" and "The Tinkerer", written as the same succinct one-line bio
+  the rest of the team already uses (closes #7)
 
 tag: `v0.2.0`
 
