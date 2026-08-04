@@ -6,6 +6,16 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 adheres to [Semantic Versioning](https://semver.org) (pre-1.0: MINOR = new features/user-facing
 behaviour, PATCH = fixes/docs/housekeeping).
 
+## [0.4.0] - 2026-08-04
+
+### Changed
+
+- "Kioge Spares" replaced with the Finch Auto logo (`public/partners/finch-auto.png`) in the
+  partners section, linked to [@finchautoparts](https://www.instagram.com/finchautoparts/) on
+  Instagram (closes #13)
+
+tag: `v0.4.0`
+
 ## [0.3.0] - 2026-08-04
 
 ### Added

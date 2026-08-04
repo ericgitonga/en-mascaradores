@@ -59,7 +59,22 @@ const TEAM: TeamMember[] = [
   },
 ];
 
-const PARTNERS = ["South Ring Motors", "Kioge Spares", "Asendi Spares", "GariScan"];
+type Partner = {
+  name: string;
+  logoSrc?: string;
+  href?: string;
+};
+
+const PARTNERS: Partner[] = [
+  { name: "South Ring Motors" },
+  {
+    name: "Finch Auto",
+    logoSrc: "/partners/finch-auto.png",
+    href: "https://www.instagram.com/finchautoparts/",
+  },
+  { name: "Asendi Spares" },
+  { name: "GariScan" },
+];
 
 export default function Home() {
   return (
@@ -166,12 +181,31 @@ export default function Home() {
           <h2 className="text-2xl font-semibold tracking-tight text-slate-900">
             Our partners
           </h2>
-          <div className="mt-8 flex flex-wrap gap-x-10 gap-y-4">
-            {PARTNERS.map((partner) => (
-              <span key={partner} className="text-base font-medium text-slate-700">
-                {partner}
-              </span>
-            ))}
+          <div className="mt-8 flex flex-wrap items-center gap-x-10 gap-y-4">
+            {PARTNERS.map((partner) =>
+              partner.logoSrc ? (
+                <a
+                  key={partner.name}
+                  href={partner.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image
+                    src={partner.logoSrc}
+                    alt={partner.name}
+                    width={127}
+                    height={32}
+                  />
+                </a>
+              ) : (
+                <span
+                  key={partner.name}
+                  className="text-base font-medium text-slate-700"
+                >
+                  {partner.name}
+                </span>
+              ),
+            )}
           </div>
         </div>
       </section>
