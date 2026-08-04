@@ -10,9 +10,13 @@ behaviour, PATCH = fixes/docs/housekeeping).
 
 ### Added
 
-- Logo in the site header, next to the wordmark — sourced from the gitignored
-  `extras/Logo.png`, resized to 512x512 and optimized into `public/logo.png` for web use
-  (closes #11)
+- Logo in the hero section, to the left of the headline and vertically centered on the banner —
+  sourced from the gitignored `extras/Logo.png`, resized to 512x512 and optimized into
+  `public/logo.png` for web use (closes #11)
+
+### Changed
+
+- Header wordmark ("En Mascaradores") sized up from `text-lg` to `text-2xl`
 
 tag: `v0.3.0`
 
