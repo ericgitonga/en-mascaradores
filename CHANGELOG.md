@@ -6,6 +6,17 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 adheres to [Semantic Versioning](https://semver.org) (pre-1.0: MINOR = new features/user-facing
 behaviour, PATCH = fixes/docs/housekeeping).
 
+## [0.5.0] - 2026-08-04
+
+### Added
+
+- Team cards are now clickable and open a modal with each member's full profile
+  (Code Name, Education, White Collar Career, Blue Collar Passion, Defining
+  Quote), skipping any category a member hasn't filled in. Closes on the X
+  button, a backdrop click, or Esc (closes #18)
+
+tag: `v0.5.0`
+
 ## [0.4.1] - 2026-08-04
 
 ### Fixed
