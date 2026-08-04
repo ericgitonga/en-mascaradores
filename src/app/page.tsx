@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 type Service = {
   title: string;
   description: string;
@@ -64,7 +66,7 @@ export default function Home() {
     <div className="flex flex-col flex-1 font-sans">
       <header className="bg-slate-900 text-white">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-5">
-          <span className="text-lg font-semibold tracking-tight">En Mascaradores</span>
+          <span className="text-2xl font-semibold tracking-tight">En Mascaradores</span>
           <a
             href="#contact"
             className="rounded-full bg-amber-500 px-4 py-2 text-sm font-medium text-slate-900 transition-colors hover:bg-amber-400"
@@ -75,22 +77,31 @@ export default function Home() {
       </header>
 
       <section className="bg-slate-900 text-white">
-        <div className="mx-auto max-w-5xl px-6 pb-20 pt-10 sm:pb-28 sm:pt-16">
-          <h1 className="max-w-2xl text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
-            White-collar by day. The trade is where we actually live.
-          </h1>
-          <p className="mt-6 max-w-xl text-lg leading-8 text-slate-300">
-            We spend our lives in white-collar jobs while deep inside we&apos;re
-            blue-collar folks who found our way back to it. Car maintenance,
-            plumbing, and electrical work — done by people who do it because
-            they want to, not because they have to.
-          </p>
-          <a
-            href="#contact"
-            className="mt-8 inline-flex items-center justify-center rounded-full bg-amber-500 px-6 py-3 text-base font-medium text-slate-900 transition-colors hover:bg-amber-400"
-          >
-            Book a job
-          </a>
+        <div className="mx-auto flex max-w-5xl flex-col items-center gap-10 px-6 pb-20 pt-10 sm:flex-row sm:pb-28 sm:pt-16">
+          <Image
+            src="/logo.png"
+            alt="En Mascaradores logo"
+            width={220}
+            height={220}
+            className="shrink-0"
+          />
+          <div>
+            <h1 className="max-w-2xl text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
+              White-collar by day. The trade is where we actually live.
+            </h1>
+            <p className="mt-6 max-w-xl text-lg leading-8 text-slate-300">
+              We spend our lives in white-collar jobs while deep inside we&apos;re
+              blue-collar folks who found our way back to it. Car maintenance,
+              plumbing, and electrical work — done by people who do it because
+              they want to, not because they have to.
+            </p>
+            <a
+              href="#contact"
+              className="mt-8 inline-flex items-center justify-center rounded-full bg-amber-500 px-6 py-3 text-base font-medium text-slate-900 transition-colors hover:bg-amber-400"
+            >
+              Book a job
+            </a>
+          </div>
         </div>
       </section>
 

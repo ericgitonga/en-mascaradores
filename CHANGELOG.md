@@ -6,6 +6,20 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 adheres to [Semantic Versioning](https://semver.org) (pre-1.0: MINOR = new features/user-facing
 behaviour, PATCH = fixes/docs/housekeeping).
 
+## [0.3.0] - 2026-08-04
+
+### Added
+
+- Logo in the hero section, to the left of the headline and vertically centered on the banner —
+  sourced from the gitignored `extras/Logo.png`, resized to 512x512 and optimized into
+  `public/logo.png` for web use (closes #11)
+
+### Changed
+
+- Header wordmark ("En Mascaradores") sized up from `text-lg` to `text-2xl`
+
+tag: `v0.3.0`
+
 ## [0.2.0] - 2026-08-04
 
 ### Added
