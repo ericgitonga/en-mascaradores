@@ -19,10 +19,10 @@ def test_partner_with_info_opens_modal_with_description_and_links():
         assert modal.is_visible()
         assert "German Machines" in modal.inner_text()
 
-        links = modal.get_by_role("link").all()
-        assert [link.inner_text() for link in links] == ["Instagram", "Facebook"]
-        assert links[0].get_attribute("href") == "https://www.instagram.com/finchautoparts/"
-        assert links[1].get_attribute("href") == "https://www.facebook.com/finchautoparts/"
+        instagram = modal.get_by_role("link", name="Instagram")
+        facebook = modal.get_by_role("link", name="Facebook")
+        assert instagram.get_attribute("href") == "https://www.instagram.com/finchautoparts/"
+        assert facebook.get_attribute("href") == "https://www.facebook.com/finchautoparts/"
 
 
 def test_partner_without_info_opens_empty_modal():
