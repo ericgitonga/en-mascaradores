@@ -28,6 +28,7 @@ const SERVICES: Service[] = [
 
 type TeamMember = {
   codename: string;
+  codenamePronunciation?: string;
   moniker: string;
   bio: string;
   education?: string;
@@ -136,7 +137,8 @@ const TEAM: TeamMember[] = [
       "\"Always effortlessly shifting gears between the soft and the hard wares.\"",
   },
   {
-    codename: "VayAnsZweiDrei (pron. Vee-Ains-Tsvai-Dkhai)",
+    codename: "VayAnsZweiDrei",
+    codenamePronunciation: "Vee-Ains-Tsvai-Dkhai",
     moniker: "Means",
     bio: "Our faithful Caledonia Green mode of motion. Timeless design, mechanical simplicity, and outlives the dinosaurs.",
     gridColumnClassName: "lg:col-start-2",
@@ -210,10 +212,14 @@ function TeamMemberModal({
       {TEAM_DETAIL_FIELDS.map(({ label, key }) => {
         const value = member[key];
         if (!value) return null;
+        const displayValue =
+          key === "codename" && member.codenamePronunciation
+            ? `${value} (pron. ${member.codenamePronunciation})`
+            : value;
         return (
           <p key={key} className="text-sm leading-6 text-slate-600">
             <span className="font-bold text-slate-900">{label}: </span>
-            {value}
+            {displayValue}
           </p>
         );
       })}
