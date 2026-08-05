@@ -28,12 +28,14 @@ const SERVICES: Service[] = [
 
 type TeamMember = {
   codename: string;
+  codenamePronunciation?: string;
   moniker: string;
   bio: string;
   education?: string;
   whiteCollarCareer?: string;
   blueCollarPassion?: string;
   definingQuote?: string;
+  gridColumnClassName?: string;
 };
 
 const TEAM: TeamMember[] = [
@@ -134,6 +136,13 @@ const TEAM: TeamMember[] = [
     definingQuote:
       "\"Always effortlessly shifting gears between the soft and the hard wares.\"",
   },
+  {
+    codename: "VayAnsZweiDrei",
+    codenamePronunciation: "Vee-Ains-Tsvai-Dkhai",
+    moniker: "Means",
+    bio: "Our faithful Caledonia Green mode of motion. Timeless design, mechanical simplicity, and outlives the dinosaurs.",
+    gridColumnClassName: "lg:col-start-2",
+  },
 ];
 
 const TEAM_DETAIL_FIELDS: Array<{
@@ -203,10 +212,14 @@ function TeamMemberModal({
       {TEAM_DETAIL_FIELDS.map(({ label, key }) => {
         const value = member[key];
         if (!value) return null;
+        const displayValue =
+          key === "codename" && member.codenamePronunciation
+            ? `${value} (pron. ${member.codenamePronunciation})`
+            : value;
         return (
           <p key={key} className="text-sm leading-6 text-slate-600">
             <span className="font-bold text-slate-900">{label}: </span>
-            {value}
+            {displayValue}
           </p>
         );
       })}
@@ -444,7 +457,7 @@ export default function Home() {
                 key={member.codename}
                 type="button"
                 onClick={() => setSelectedMember(member)}
-                className="rounded-lg border border-slate-200 p-6 text-left transition-colors hover:border-slate-300 hover:bg-slate-50"
+                className={`rounded-lg border border-slate-200 p-6 text-left transition-colors hover:border-slate-300 hover:bg-slate-50 ${member.gridColumnClassName ?? ""}`}
               >
                 <h3 className="text-lg font-semibold text-slate-900">{member.codename}</h3>
                 <p className="mt-2 text-sm leading-6 text-slate-600">{member.bio}</p>
