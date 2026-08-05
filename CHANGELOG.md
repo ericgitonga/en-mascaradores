@@ -6,6 +6,16 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 adheres to [Semantic Versioning](https://semver.org) (pre-1.0: MINOR = new features/user-facing
 behaviour, PATCH = fixes/docs/housekeeping).
 
+## [0.7.0] - 2026-08-04
+
+### Added
+
+- Two new team member profiles: El Nino and d3eikei (closes #22)
+- Team member modals now lead with a Moniker field showing each member's real
+  name, above Code Name
+
+tag: `v0.7.0`
+
 ## [0.6.0] - 2026-08-04
 
 ### Added
