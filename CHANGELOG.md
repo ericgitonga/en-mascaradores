@@ -6,6 +6,15 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 adheres to [Semantic Versioning](https://semver.org) (pre-1.0: MINOR = new features/user-facing
 behaviour, PATCH = fixes/docs/housekeeping).
 
+## [0.8.0] - 2026-08-05
+
+### Added
+
+- Added VayAnsZweiDrei, the team's mascot vehicle, as its own entry at the
+  bottom of the team section, pinned to the middle column (closes #24)
+
+tag: `v0.8.0`
+
 ## [0.7.0] - 2026-08-04
 
 ### Added

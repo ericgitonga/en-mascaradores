@@ -34,6 +34,7 @@ type TeamMember = {
   whiteCollarCareer?: string;
   blueCollarPassion?: string;
   definingQuote?: string;
+  gridColumnClassName?: string;
 };
 
 const TEAM: TeamMember[] = [
@@ -133,6 +134,12 @@ const TEAM: TeamMember[] = [
       "While his head might be in the cloud, his pulse is decidedly mechanical. Strip away the user interfaces and databases, and you'll find a man whose true passion lies in the bare metal — an engine for a heart, and a dyed-in-the-wool petrolhead since childhood. He is the proud, hands-on mastermind behind G1ZMO, his meticulously crafted EP-91 Glanza S project (#SaveTheTwoDoors), and has earned his grease-stained stripes deep in the mechanical and powertrain trenches of the Strathmore Formula Student (FS) racing team. When he isn't turning wrenches or compiling code, he's out chasing the horizon — armed with a Nikon D3400, he roams the wild, hunting for the perfect shot. A true connoisseur of the open road, his downtime is fueled by a steady diet of nature, steep hikes, spontaneous road trips, and a killer soundtrack.",
     definingQuote:
       "\"Always effortlessly shifting gears between the soft and the hard wares.\"",
+  },
+  {
+    codename: "VayAnsZweiDrei (pron. Vee-Ains-Tsvai-Dkhai)",
+    moniker: "Means",
+    bio: "Our faithful Caledonia Green mode of motion. Timeless design, mechanical simplicity, and outlives the dinosaurs.",
+    gridColumnClassName: "lg:col-start-2",
   },
 ];
 
@@ -444,7 +451,7 @@ export default function Home() {
                 key={member.codename}
                 type="button"
                 onClick={() => setSelectedMember(member)}
-                className="rounded-lg border border-slate-200 p-6 text-left transition-colors hover:border-slate-300 hover:bg-slate-50"
+                className={`rounded-lg border border-slate-200 p-6 text-left transition-colors hover:border-slate-300 hover:bg-slate-50 ${member.gridColumnClassName ?? ""}`}
               >
                 <h3 className="text-lg font-semibold text-slate-900">{member.codename}</h3>
                 <p className="mt-2 text-sm leading-6 text-slate-600">{member.bio}</p>
