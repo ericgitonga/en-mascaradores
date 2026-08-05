@@ -11,6 +11,8 @@ behaviour, PATCH = fixes/docs/housekeeping).
 ### Added
 
 - Two new team member profiles: El Nino and d3eikei (closes #22)
+- Team member modals now lead with a Moniker field showing each member's real
+  name, above Code Name
 
 tag: `v0.7.0`
 

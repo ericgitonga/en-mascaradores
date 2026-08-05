@@ -28,6 +28,7 @@ const SERVICES: Service[] = [
 
 type TeamMember = {
   codename: string;
+  moniker: string;
   bio: string;
   education?: string;
   whiteCollarCareer?: string;
@@ -38,6 +39,7 @@ type TeamMember = {
 const TEAM: TeamMember[] = [
   {
     codename: "November",
+    moniker: "L.O.",
     bio: "Engineer by trade, tinkerer by nature. Cars, plumbing, wiring — if it's broken, he's already reaching for a tool.",
     education: "Bsc. Geomatics Engineering",
     whiteCollarCareer: "Xoogler, GIS / IoT, Telcomms",
@@ -48,6 +50,7 @@ const TEAM: TeamMember[] = [
   },
   {
     codename: "The Dark Night",
+    moniker: "Levyne",
     bio: "Started with bicycles, graduated to small cars. If it has wheels and a problem, he's fixing it.",
     education: "Bsc. Computer Science.",
     whiteCollarCareer: "Upande ltd, Uber",
@@ -56,6 +59,7 @@ const TEAM: TeamMember[] = [
   },
   {
     codename: "The Catalyst",
+    moniker: "Erick Kobia",
     bio: "A chemist who can't stop optimizing systems — including yours. Precise, methodical, allergic to sloppy work.",
     education: "Bsc. Industrial Chemistry, JKUAT.",
     whiteCollarCareer:
@@ -67,6 +71,7 @@ const TEAM: TeamMember[] = [
   },
   {
     codename: "Tactician",
+    moniker: "Brian Ochieng’",
     bio: "Built infrastructure by day for years, now just as happy solving the small stuff by hand.",
     education:
       "AHS, BSc. Civil Engineering, University of Nairobi, MSc. Civil Eng University of Glasgow",
@@ -77,6 +82,7 @@ const TEAM: TeamMember[] = [
   },
   {
     codename: "The Fuser",
+    moniker: "Eric Gitonga",
     bio: "Half art, half circuitry. Approaches every job like a design problem worth getting right.",
     education: "BSc. Electrical Engineering",
     whiteCollarCareer: "Fiddling 1s and 0s",
@@ -87,6 +93,7 @@ const TEAM: TeamMember[] = [
   },
   {
     codename: "Herb",
+    moniker: "Herbert",
     bio: "Solar PV engineer who moonlights on electrical installations and the e-mobility wave. Farms on the side, and always has advice for whoever needs a nudge forward.",
     education: "BEng. Electrical & Electronics Engineering",
     whiteCollarCareer: "Renewable Energy, Solar PV C&I industry.",
@@ -95,6 +102,7 @@ const TEAM: TeamMember[] = [
   },
   {
     codename: "The Tinkerer",
+    moniker: "Kenneth Kinungi Mauwi",
     bio: "Still finishing his electronics engineering degree, already happier with a multimeter than a textbook. Takes gadgets apart to see how they break, then builds them back better.",
     education: "B.Sc. Electronics and Computer Engineering (Student)",
     whiteCollarCareer:
@@ -106,6 +114,7 @@ const TEAM: TeamMember[] = [
   },
   {
     codename: "El Nino",
+    moniker: "Padre Pio",
     bio: "Computer nerd deep in Linux and engineering by day, pianist and poet the rest of the time. Lately hooked on engines, electric cars, and motorcycles.",
     education: "Bsc. Computer Science.",
     whiteCollarCareer:
@@ -115,6 +124,7 @@ const TEAM: TeamMember[] = [
   },
   {
     codename: "d3eikei",
+    moniker: "Johnwillis Alande",
     bio: "Full-stack developer with a petrolhead's heart — builder behind G1ZMO, grease-stained veteran of Strathmore's Formula Student team, and an open-road wanderer with a camera in hand.",
     education: "BSc. Informatics and Computer Science",
     whiteCollarCareer:
@@ -130,6 +140,7 @@ const TEAM_DETAIL_FIELDS: Array<{
   label: string;
   key: keyof TeamMember;
 }> = [
+  { label: "Moniker", key: "moniker" },
   { label: "Code Name", key: "codename" },
   { label: "Education", key: "education" },
   { label: "White Collar Career", key: "whiteCollarCareer" },
