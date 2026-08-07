@@ -62,7 +62,7 @@ const TEAM: TeamMember[] = [
   {
     codename: "The Catalyst",
     moniker: "Erick Kobia",
-    bio: "A chemist who can't stop optimizing systems — including yours. Precise, methodical, allergic to sloppy work.",
+    bio: "A chemist who can't stop optimising systems — including yours. Precise, methodical, allergic to sloppy work.",
     education: "Bsc. Industrial Chemistry, JKUAT.",
     whiteCollarCareer:
       "R&D Chemist / Product Development Lead, currently formulating an in-house beverage and running quality systems tight enough to survive back-to-back audits at Sobetra Uganda Ltd.",
