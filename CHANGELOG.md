@@ -6,6 +6,15 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 adheres to [Semantic Versioning](https://semver.org) (pre-1.0: MINOR = new features/user-facing
 behaviour, PATCH = fixes/docs/housekeeping).
 
+## [0.8.1] - 2026-08-07
+
+### Fixed
+
+- Standardised American spelling to British spelling in prose text
+  ("centered" → "centred", "optimized"/"optimizing" → "optimised"/"optimising")
+
+tag: `v0.8.1`
+
 ## [0.8.0] - 2026-08-05
 
 ### Added
@@ -71,8 +80,8 @@ tag: `v0.4.0`
 
 ### Added
 
-- Logo in the hero section, to the left of the headline and vertically centered on the banner —
-  sourced from the gitignored `extras/Logo.png`, resized to 512x512 and optimized into
+- Logo in the hero section, to the left of the headline and vertically centred on the banner —
+  sourced from the gitignored `extras/Logo.png`, resized to 512x512 and optimised into
   `public/logo.png` for web use (closes #11)
 
 ### Changed
