@@ -6,6 +6,15 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 adheres to [Semantic Versioning](https://semver.org) (pre-1.0: MINOR = new features/user-facing
 behaviour, PATCH = fixes/docs/housekeeping).
 
+## [0.8.2] - 2026-08-10
+
+### Fixed
+
+- Synced `package.json`'s `"version"` field, which had drifted to `0.8.0` while `VERSION` and
+  the CHANGELOG had already moved on to `0.8.1` (closes #28)
+
+tag: `v0.8.2`
+
 ## [0.8.1] - 2026-08-07
 
 ### Fixed
