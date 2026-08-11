@@ -6,6 +6,17 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 adheres to [Semantic Versioning](https://semver.org) (pre-1.0: MINOR = new features/user-facing
 behaviour, PATCH = fixes/docs/housekeeping).
 
+## [0.8.3] - 2026-08-11
+
+### Added
+- ESLint now runs as its own independently-gated CI check (`lint` job in
+  `.github/workflows/e2e.yml`), rather than only running manually — a lint
+  regression that didn't break the build could previously merge unnoticed.
+  Enabled Dependabot vulnerability alerts and automated security updates,
+  both of which were off at the repo level. (closes #30)
+
+tag: `v0.8.3`
+
 ## [0.8.2] - 2026-08-10
 
 ### Fixed
