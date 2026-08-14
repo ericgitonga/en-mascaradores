@@ -6,6 +6,19 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 adheres to [Semantic Versioning](https://semver.org) (pre-1.0: MINOR = new features/user-facing
 behaviour, PATCH = fixes/docs/housekeeping).
 
+## [0.8.4] - 2026-08-14
+
+### Security
+- Bumped `next`/`eslint-config-next` 16.2.11 -> 16.3.0 and ran `npm audit fix`, clearing all
+  6 high-severity transitive advisories (`brace-expansion`, `js-yaml`, `nanoid`, `postcss`,
+  `next`, `sharp`) (closes #36)
+- Added baseline HTTP security headers via `next.config.ts`'s `headers()`: X-Frame-Options,
+  X-Content-Type-Options, Referrer-Policy, Permissions-Policy, Strict-Transport-Security, and
+  a CSP scoped to this static page's actual same-origin footprint (self-hosted next/font
+  Google fonts, local images, same-origin Vercel Analytics/Speed Insights beacons) (closes #36)
+
+tag: `v0.8.4`
+
 ## [0.8.3] - 2026-08-11
 
 ### Added
