@@ -6,9 +6,9 @@ from _common import browser_page
 
 SECTION_HEADINGS = {
     "services": "Our services",
+    "partners": "Our partners",
     "hours": "Working hours",
     "team": "Meet the team",
-    "partners": "Our partners",
     "contact": "Get in touch",
 }
 
@@ -22,7 +22,7 @@ def test_index_loads():
 
         heading = page.locator("h1")
         assert heading.is_visible()
-        assert "White-collar by day" in heading.inner_text()
+        assert "Skip the queue" in heading.inner_text()
 
 
 def test_all_sections_render():

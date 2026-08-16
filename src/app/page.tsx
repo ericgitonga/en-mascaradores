@@ -35,7 +35,6 @@ type TeamMember = {
   whiteCollarCareer?: string;
   blueCollarPassion?: string;
   definingQuote?: string;
-  gridColumnClassName?: string;
 };
 
 const TEAM: TeamMember[] = [
@@ -141,7 +140,6 @@ const TEAM: TeamMember[] = [
     codenamePronunciation: "Vee-Ains-Tsvai-Dkhai",
     moniker: "Means",
     bio: "Our faithful Caledonia Green mode of motion. Timeless design, mechanical simplicity, and outlives the dinosaurs.",
-    gridColumnClassName: "lg:col-start-2",
   },
 ];
 
@@ -362,18 +360,28 @@ function PartnerModal({
 export default function Home() {
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
   const [selectedPartner, setSelectedPartner] = useState<Partner | null>(null);
-
   return (
     <div className="flex flex-col flex-1 font-sans">
-      <header className="bg-slate-900 text-white">
+      <header className="sticky top-0 z-50 bg-slate-900 text-white">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-5">
           <span className="text-2xl font-semibold tracking-tight">En Mascaradores</span>
-          <a
-            href="#contact"
-            className="rounded-full bg-amber-500 px-4 py-2 text-sm font-medium text-slate-900 transition-colors hover:bg-amber-400"
-          >
-            Get in touch
-          </a>
+          <nav className="flex items-center gap-6">
+            <a href="#services" className="hidden text-sm font-medium text-slate-300 hover:text-white sm:inline">
+              Services
+            </a>
+            <a href="#partners" className="hidden text-sm font-medium text-slate-300 hover:text-white sm:inline">
+              Partners
+            </a>
+            <a href="#team" className="hidden text-sm font-medium text-slate-300 hover:text-white sm:inline">
+              Team
+            </a>
+            <a
+              href="#contact"
+              className="rounded-full bg-amber-500 px-4 py-2 text-sm font-medium text-slate-900 transition-colors hover:bg-amber-400"
+            >
+              Get in touch
+            </a>
+          </nav>
         </div>
       </header>
 
@@ -387,14 +395,18 @@ export default function Home() {
             className="shrink-0"
           />
           <div>
-            <h1 className="max-w-2xl text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
-              White-collar by day. The trade is where we actually live.
+            <p className="text-sm font-semibold uppercase tracking-wide text-amber-400">
+              Car care, plumbing &amp; electrical — without the hassle
+            </p>
+            <h1 className="mt-3 max-w-2xl text-2xl font-semibold leading-tight tracking-tight sm:text-3xl lg:text-4xl">
+              Skip the queue. We&apos;ll come to you.
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-8 text-slate-300">
-              We spend our lives in white-collar jobs while deep inside we&apos;re
-              blue-collar folks who found our way back to it. Car maintenance,
-              plumbing, and electrical work — done by people who do it because
-              they want to, not because they have to.
+              No standing around at a garage counter, no waiting in all day
+              for a tradesperson who might not show, no being talked over
+              about what actually needs fixing. We handle the car
+              maintenance, plumbing, and electrical jobs piling up at home —
+              on your schedule, done properly.
             </p>
             <a
               href="#contact"
@@ -406,7 +418,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="services" className="bg-white">
+      <section id="services" className="scroll-mt-20 bg-white">
         <div className="mx-auto max-w-5xl px-6 py-20">
           <h2 className="text-2xl font-semibold tracking-tight text-slate-900">
             Our services
@@ -422,7 +434,44 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="hours" className="bg-slate-50">
+      <section id="partners" className="scroll-mt-20 bg-slate-50">
+        <div className="mx-auto max-w-5xl px-6 py-20">
+          <h2 className="text-2xl font-semibold tracking-tight text-slate-900">
+            Our partners
+          </h2>
+          <p className="mt-4 max-w-2xl text-base leading-7 text-slate-600">
+            This is the list of trusted partners we also work with. From car
+            accessories to service parts. They have proven to deliver in
+            terms of quality and that is why we work with them.
+          </p>
+          <div className="mt-8 grid gap-4 sm:grid-cols-3 lg:grid-cols-4">
+            {PARTNERS.map((partner) => (
+              <button
+                key={partner.name}
+                type="button"
+                onClick={() => setSelectedPartner(partner)}
+                className="flex min-h-[88px] items-center justify-center rounded-lg border border-slate-200 bg-white p-4 text-center transition-colors hover:border-slate-300 hover:bg-slate-100"
+              >
+                {partner.logoSrc ? (
+                  <Image
+                    src={partner.logoSrc}
+                    alt={partner.name}
+                    width={partner.logoWidth ?? 127}
+                    height={partner.logoHeight ?? 32}
+                    className="h-10 w-auto max-w-full object-contain"
+                  />
+                ) : (
+                  <span className="text-base font-medium text-slate-700">
+                    {partner.name}
+                  </span>
+                )}
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="hours" className="scroll-mt-20 bg-white">
         <div className="mx-auto max-w-5xl px-6 py-20">
           <h2 className="text-2xl font-semibold tracking-tight text-slate-900">
             Working hours
@@ -446,20 +495,20 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="team" className="bg-white">
+      <section id="team" className="scroll-mt-20 bg-slate-50">
         <div className="mx-auto max-w-5xl px-6 py-20">
           <h2 className="text-2xl font-semibold tracking-tight text-slate-900">
             Meet the team
           </h2>
-          <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid gap-4 sm:grid-cols-3 lg:grid-cols-4">
             {TEAM.map((member) => (
               <button
                 key={member.codename}
                 type="button"
                 onClick={() => setSelectedMember(member)}
-                className={`rounded-lg border border-slate-200 p-6 text-left transition-colors hover:border-slate-300 hover:bg-slate-50 ${member.gridColumnClassName ?? ""}`}
+                className="min-h-[88px] rounded-lg border border-slate-200 bg-white p-4 text-left transition-colors hover:border-slate-300 hover:bg-slate-100"
               >
-                <h3 className="text-lg font-semibold text-slate-900">{member.codename}</h3>
+                <h3 className="text-base font-semibold text-slate-900">{member.codename}</h3>
                 <p className="mt-2 text-sm leading-6 text-slate-600">{member.bio}</p>
               </button>
             ))}
@@ -467,44 +516,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="partners" className="bg-slate-50">
-        <div className="mx-auto max-w-5xl px-6 py-20">
-          <h2 className="text-2xl font-semibold tracking-tight text-slate-900">
-            Our partners
-          </h2>
-          <p className="mt-4 max-w-2xl text-base leading-7 text-slate-600">
-            This is the list of trusted partners we also work with. From car
-            accessories to service parts. They have proven to deliver in
-            terms of quality and that is why we work with them.
-          </p>
-          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
-            {PARTNERS.map((partner) => (
-              <button
-                key={partner.name}
-                type="button"
-                onClick={() => setSelectedPartner(partner)}
-                className="rounded-lg px-4 py-3 transition-colors hover:bg-white hover:shadow-sm"
-              >
-                {partner.logoSrc ? (
-                  <Image
-                    src={partner.logoSrc}
-                    alt={partner.name}
-                    width={partner.logoWidth ?? 127}
-                    height={partner.logoHeight ?? 32}
-                    className="h-8 w-auto"
-                  />
-                ) : (
-                  <span className="text-base font-medium text-slate-700">
-                    {partner.name}
-                  </span>
-                )}
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="contact" className="bg-slate-900 text-white">
+      <section id="contact" className="scroll-mt-20 bg-slate-900 text-white">
         <div className="mx-auto max-w-5xl px-6 py-20 text-center">
           <h2 className="text-2xl font-semibold tracking-tight">Get in touch</h2>
           <p className="mt-4 text-base leading-7 text-slate-300">

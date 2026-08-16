@@ -6,6 +6,26 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 adheres to [Semantic Versioning](https://semver.org) (pre-1.0: MINOR = new features/user-facing
 behaviour, PATCH = fixes/docs/housekeeping).
 
+## [0.9.0] - 2026-08-16
+
+### Changed
+- Rewrote the hero headline/subhead/tagline to speak directly to the target customer's
+  actual pain point — avoiding a wasted wait for a garage or a tradesperson, and being
+  talked over about what needs fixing — rather than the team's own white-collar/blue-collar
+  backstory, and to name all three service lines (car, plumbing, electrical) rather than
+  car care alone (closes #38)
+- Reordered the page so "Our services" and "Our partners" sit high on the page, right after
+  the hero, ahead of working hours; "Meet the team" now sits at the bottom, just above
+  "Get in touch" (closes #38)
+- Team cards each show the member's codename and bio summary (full detail still opens in the
+  existing modal on click); partner cards now share the same uniform card size as team
+  cards, replacing the old variable-width logo row (closes #38)
+- Header nav is now sticky (stays pinned to the top on scroll, matching umoja-voices), with
+  scroll-margin added to each anchored section so its heading doesn't land hidden underneath
+  the fixed bar (closes #38)
+
+tag: `v0.9.0`
+
 ## [0.8.4] - 2026-08-14
 
 ### Security
