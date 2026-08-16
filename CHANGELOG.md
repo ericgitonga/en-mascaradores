@@ -12,13 +12,14 @@ behaviour, PATCH = fixes/docs/housekeeping).
 - Rewrote the hero headline/subhead/tagline to speak directly to the target customer's
   actual pain point — avoiding the garage because of the hassle involved (queuing, losing a
   chunk of a day, being talked over) — rather than the team's own white-collar/blue-collar
-  backstory (closes #38)
+  backstory, and to name all three service lines (car, plumbing, electrical) rather than
+  car care alone (closes #38)
 - Reordered the page so "Our services" and "Our partners" sit high on the page, right after
   the hero, ahead of working hours; "Meet the team" now sits at the bottom, just above
   "Get in touch" (closes #38)
-- Team cards are now compact, showing only each member's codename (full bio still opens in
-  the existing detail modal on click); partner cards now share the same uniform card size
-  as team cards, replacing the old variable-width logo row (closes #38)
+- Team cards each show the member's codename and bio summary (full detail still opens in the
+  existing modal on click); partner cards now share the same uniform card size as team
+  cards, replacing the old variable-width logo row (closes #38)
 - Header nav is now sticky (stays pinned to the top on scroll, matching umoja-voices), with
   scroll-margin added to each anchored section so its heading doesn't land hidden underneath
   the fixed bar (closes #38)

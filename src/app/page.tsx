@@ -396,7 +396,7 @@ export default function Home() {
           />
           <div>
             <p className="text-sm font-semibold uppercase tracking-wide text-amber-400">
-              Car care without the garage runaround
+              Car care, plumbing &amp; electrical — without the hassle
             </p>
             <h1 className="mt-3 max-w-2xl text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
               Skip the garage. We&apos;ll come to you.
@@ -505,11 +505,10 @@ export default function Home() {
                 key={member.codename}
                 type="button"
                 onClick={() => setSelectedMember(member)}
-                className="flex min-h-[88px] items-center justify-center rounded-lg border border-slate-200 bg-white p-4 text-center transition-colors hover:border-slate-300 hover:bg-slate-100"
+                className="min-h-[88px] rounded-lg border border-slate-200 bg-white p-4 text-left transition-colors hover:border-slate-300 hover:bg-slate-100"
               >
-                <span className="text-base font-semibold text-slate-900">
-                  {member.codename}
-                </span>
+                <h3 className="text-base font-semibold text-slate-900">{member.codename}</h3>
+                <p className="mt-2 text-sm leading-6 text-slate-600">{member.bio}</p>
               </button>
             ))}
           </div>
