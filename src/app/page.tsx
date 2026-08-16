@@ -399,13 +399,14 @@ export default function Home() {
               Car care, plumbing &amp; electrical — without the hassle
             </p>
             <h1 className="mt-3 max-w-2xl text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
-              Skip the garage. We&apos;ll come to you.
+              Skip the queue. We&apos;ll come to you.
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-8 text-slate-300">
-              No queuing at a garage counter, no losing half your day, no being
-              talked over about what your car actually needs. We handle the
-              car maintenance — plus the plumbing and electrical jobs piling
-              up at home — on your schedule, done properly.
+              No standing around at a garage counter, no waiting in all day
+              for a tradesperson who might not show, no being talked over
+              about what actually needs fixing. We handle the car
+              maintenance, plumbing, and electrical jobs piling up at home —
+              on your schedule, done properly.
             </p>
             <a
               href="#contact"

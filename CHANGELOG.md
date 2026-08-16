@@ -10,8 +10,8 @@ behaviour, PATCH = fixes/docs/housekeeping).
 
 ### Changed
 - Rewrote the hero headline/subhead/tagline to speak directly to the target customer's
-  actual pain point — avoiding the garage because of the hassle involved (queuing, losing a
-  chunk of a day, being talked over) — rather than the team's own white-collar/blue-collar
+  actual pain point — avoiding a wasted wait for a garage or a tradesperson, and being
+  talked over about what needs fixing — rather than the team's own white-collar/blue-collar
   backstory, and to name all three service lines (car, plumbing, electrical) rather than
   car care alone (closes #38)
 - Reordered the page so "Our services" and "Our partners" sit high on the page, right after

@@ -22,7 +22,7 @@ def test_index_loads():
 
         heading = page.locator("h1")
         assert heading.is_visible()
-        assert "Skip the garage" in heading.inner_text()
+        assert "Skip the queue" in heading.inner_text()
 
 
 def test_all_sections_render():
