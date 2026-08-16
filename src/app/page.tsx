@@ -362,7 +362,7 @@ export default function Home() {
   const [selectedPartner, setSelectedPartner] = useState<Partner | null>(null);
   return (
     <div className="flex flex-col flex-1 font-sans">
-      <header className="bg-slate-900 text-white">
+      <header className="sticky top-0 z-50 bg-slate-900 text-white">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-5">
           <span className="text-2xl font-semibold tracking-tight">En Mascaradores</span>
           <nav className="flex items-center gap-6">
@@ -414,7 +414,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="services" className="bg-white">
+      <section id="services" className="scroll-mt-20 bg-white">
         <div className="mx-auto max-w-5xl px-6 py-20">
           <h2 className="text-2xl font-semibold tracking-tight text-slate-900">
             Our services
@@ -430,7 +430,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="partners" className="bg-slate-50">
+      <section id="partners" className="scroll-mt-20 bg-slate-50">
         <div className="mx-auto max-w-5xl px-6 py-20">
           <h2 className="text-2xl font-semibold tracking-tight text-slate-900">
             Our partners
@@ -467,7 +467,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="hours" className="bg-white">
+      <section id="hours" className="scroll-mt-20 bg-white">
         <div className="mx-auto max-w-5xl px-6 py-20">
           <h2 className="text-2xl font-semibold tracking-tight text-slate-900">
             Working hours
@@ -491,7 +491,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="team" className="bg-slate-50">
+      <section id="team" className="scroll-mt-20 bg-slate-50">
         <div className="mx-auto max-w-5xl px-6 py-20">
           <h2 className="text-2xl font-semibold tracking-tight text-slate-900">
             Meet the team
@@ -513,7 +513,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="contact" className="bg-slate-900 text-white">
+      <section id="contact" className="scroll-mt-20 bg-slate-900 text-white">
         <div className="mx-auto max-w-5xl px-6 py-20 text-center">
           <h2 className="text-2xl font-semibold tracking-tight">Get in touch</h2>
           <p className="mt-4 text-base leading-7 text-slate-300">

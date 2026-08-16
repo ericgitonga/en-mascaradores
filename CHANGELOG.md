@@ -19,6 +19,9 @@ behaviour, PATCH = fixes/docs/housekeeping).
 - Team cards are now compact, showing only each member's codename (full bio still opens in
   the existing detail modal on click); partner cards now share the same uniform card size
   as team cards, replacing the old variable-width logo row (closes #38)
+- Header nav is now sticky (stays pinned to the top on scroll, matching umoja-voices), with
+  scroll-margin added to each anchored section so its heading doesn't land hidden underneath
+  the fixed bar (closes #38)
 
 tag: `v0.9.0`
 
