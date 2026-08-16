@@ -398,7 +398,7 @@ export default function Home() {
             <p className="text-sm font-semibold uppercase tracking-wide text-amber-400">
               Car care, plumbing &amp; electrical — without the hassle
             </p>
-            <h1 className="mt-3 max-w-2xl text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
+            <h1 className="mt-3 max-w-2xl text-2xl font-semibold leading-tight tracking-tight sm:text-3xl lg:text-4xl">
               Skip the queue. We&apos;ll come to you.
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-8 text-slate-300">
