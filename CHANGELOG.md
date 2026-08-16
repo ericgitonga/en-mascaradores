@@ -6,6 +6,21 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 adheres to [Semantic Versioning](https://semver.org) (pre-1.0: MINOR = new features/user-facing
 behaviour, PATCH = fixes/docs/housekeeping).
 
+## [0.9.0] - 2026-08-16
+
+### Changed
+- Rewrote the hero headline/subhead to speak directly to the target customer's actual pain
+  point — avoiding the garage because of the hassle involved (queuing, losing a chunk of a
+  day, being talked over) — rather than the team's own white-collar/blue-collar backstory
+  (closes #38)
+- Reordered the page so "Our services" and "Our partners" sit high on the page, right after
+  the hero, ahead of working hours and contact (closes #38)
+- Moved "Meet the team" out of the main scroll and behind a "Who we are" link in the header
+  nav, which opens the full roster in a modal; clicking a member still opens their existing
+  detail modal (closes #38)
+
+tag: `v0.9.0`
+
 ## [0.8.4] - 2026-08-14
 
 ### Security

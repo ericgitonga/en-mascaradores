@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "En Mascaradores — Car, Plumbing & Electrical Repairs",
   description:
-    "Trusted routine car maintenance, plumbing, and electrical repairs. Tuesdays through Thursdays.",
+    "Skip the garage queue. Trusted car maintenance, plumbing, and electrical repairs, done at your place, Tuesdays through Thursdays.",
 };
 
 export default function RootLayout({

@@ -35,7 +35,6 @@ type TeamMember = {
   whiteCollarCareer?: string;
   blueCollarPassion?: string;
   definingQuote?: string;
-  gridColumnClassName?: string;
 };
 
 const TEAM: TeamMember[] = [
@@ -141,7 +140,6 @@ const TEAM: TeamMember[] = [
     codenamePronunciation: "Vee-Ains-Tsvai-Dkhai",
     moniker: "Means",
     bio: "Our faithful Caledonia Green mode of motion. Timeless design, mechanical simplicity, and outlives the dinosaurs.",
-    gridColumnClassName: "lg:col-start-2",
   },
 ];
 
@@ -161,10 +159,12 @@ function Modal({
   label,
   onClose,
   children,
+  widthClassName = "max-w-lg",
 }: {
   label: string;
   onClose: () => void;
   children: React.ReactNode;
+  widthClassName?: string;
 }) {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -183,7 +183,7 @@ function Modal({
         role="dialog"
         aria-modal="true"
         aria-label={label}
-        className="relative max-h-[85vh] w-full max-w-lg overflow-y-auto rounded-lg bg-white p-6 shadow-xl"
+        className={`relative max-h-[85vh] w-full ${widthClassName} overflow-y-auto rounded-lg bg-white p-6 shadow-xl`}
         onClick={(event) => event.stopPropagation()}
       >
         <button
@@ -223,6 +223,33 @@ function TeamMemberModal({
           </p>
         );
       })}
+    </Modal>
+  );
+}
+
+function TeamRosterModal({
+  onSelectMember,
+  onClose,
+}: {
+  onSelectMember: (member: TeamMember) => void;
+  onClose: () => void;
+}) {
+  return (
+    <Modal label="Meet the team" onClose={onClose} widthClassName="max-w-2xl">
+      <h3 className="text-lg font-semibold text-slate-900">Meet the team</h3>
+      <div className="space-y-4">
+        {TEAM.map((member) => (
+          <button
+            key={member.codename}
+            type="button"
+            onClick={() => onSelectMember(member)}
+            className="block w-full rounded-lg border border-slate-200 p-4 text-left transition-colors hover:border-slate-300 hover:bg-slate-50"
+          >
+            <h4 className="text-base font-semibold text-slate-900">{member.codename}</h4>
+            <p className="mt-1 text-sm leading-6 text-slate-600">{member.bio}</p>
+          </button>
+        ))}
+      </div>
     </Modal>
   );
 }
@@ -362,18 +389,34 @@ function PartnerModal({
 export default function Home() {
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
   const [selectedPartner, setSelectedPartner] = useState<Partner | null>(null);
+  const [teamRosterOpen, setTeamRosterOpen] = useState(false);
 
   return (
     <div className="flex flex-col flex-1 font-sans">
       <header className="bg-slate-900 text-white">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-5">
           <span className="text-2xl font-semibold tracking-tight">En Mascaradores</span>
-          <a
-            href="#contact"
-            className="rounded-full bg-amber-500 px-4 py-2 text-sm font-medium text-slate-900 transition-colors hover:bg-amber-400"
-          >
-            Get in touch
-          </a>
+          <nav className="flex items-center gap-6">
+            <a href="#services" className="hidden text-sm font-medium text-slate-300 hover:text-white sm:inline">
+              Services
+            </a>
+            <a href="#partners" className="hidden text-sm font-medium text-slate-300 hover:text-white sm:inline">
+              Partners
+            </a>
+            <button
+              type="button"
+              onClick={() => setTeamRosterOpen(true)}
+              className="hidden text-sm font-medium text-slate-300 hover:text-white sm:inline"
+            >
+              Who we are
+            </button>
+            <a
+              href="#contact"
+              className="rounded-full bg-amber-500 px-4 py-2 text-sm font-medium text-slate-900 transition-colors hover:bg-amber-400"
+            >
+              Get in touch
+            </a>
+          </nav>
         </div>
       </header>
 
@@ -387,14 +430,17 @@ export default function Home() {
             className="shrink-0"
           />
           <div>
-            <h1 className="max-w-2xl text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
-              White-collar by day. The trade is where we actually live.
+            <p className="text-sm font-semibold uppercase tracking-wide text-amber-400">
+              Car care without the garage runaround
+            </p>
+            <h1 className="mt-3 max-w-2xl text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
+              Skip the garage. We&apos;ll come to you.
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-8 text-slate-300">
-              We spend our lives in white-collar jobs while deep inside we&apos;re
-              blue-collar folks who found our way back to it. Car maintenance,
-              plumbing, and electrical work — done by people who do it because
-              they want to, not because they have to.
+              No queuing at a garage counter, no losing half your day, no being
+              talked over about what your car actually needs. We handle the
+              car maintenance — plus the plumbing and electrical jobs piling
+              up at home — on your schedule, done properly.
             </p>
             <a
               href="#contact"
@@ -417,51 +463,6 @@ export default function Home() {
                 <h3 className="text-lg font-semibold text-slate-900">{service.title}</h3>
                 <p className="mt-2 text-sm leading-6 text-slate-600">{service.description}</p>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="hours" className="bg-slate-50">
-        <div className="mx-auto max-w-5xl px-6 py-20">
-          <h2 className="text-2xl font-semibold tracking-tight text-slate-900">
-            Working hours
-          </h2>
-          <p className="mt-4 max-w-2xl text-base leading-7 text-slate-600">
-            Weekends are for family and friends — why should we be working
-            instead of hanging out with y&apos;all? So we only work Tuesdays,
-            Wednesdays, and Thursdays. We have other careers, and we need the
-            rest too. Weekend jobs are possible, just at a premium.
-          </p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            {["Tuesday", "Wednesday", "Thursday"].map((day) => (
-              <span
-                key={day}
-                className="rounded-full bg-slate-900 px-4 py-2 text-sm font-medium text-white"
-              >
-                {day}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="team" className="bg-white">
-        <div className="mx-auto max-w-5xl px-6 py-20">
-          <h2 className="text-2xl font-semibold tracking-tight text-slate-900">
-            Meet the team
-          </h2>
-          <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {TEAM.map((member) => (
-              <button
-                key={member.codename}
-                type="button"
-                onClick={() => setSelectedMember(member)}
-                className={`rounded-lg border border-slate-200 p-6 text-left transition-colors hover:border-slate-300 hover:bg-slate-50 ${member.gridColumnClassName ?? ""}`}
-              >
-                <h3 className="text-lg font-semibold text-slate-900">{member.codename}</h3>
-                <p className="mt-2 text-sm leading-6 text-slate-600">{member.bio}</p>
-              </button>
             ))}
           </div>
         </div>
@@ -504,6 +505,30 @@ export default function Home() {
         </div>
       </section>
 
+      <section id="hours" className="bg-white">
+        <div className="mx-auto max-w-5xl px-6 py-20">
+          <h2 className="text-2xl font-semibold tracking-tight text-slate-900">
+            Working hours
+          </h2>
+          <p className="mt-4 max-w-2xl text-base leading-7 text-slate-600">
+            Weekends are for family and friends — why should we be working
+            instead of hanging out with y&apos;all? So we only work Tuesdays,
+            Wednesdays, and Thursdays. We have other careers, and we need the
+            rest too. Weekend jobs are possible, just at a premium.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            {["Tuesday", "Wednesday", "Thursday"].map((day) => (
+              <span
+                key={day}
+                className="rounded-full bg-slate-900 px-4 py-2 text-sm font-medium text-white"
+              >
+                {day}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section id="contact" className="bg-slate-900 text-white">
         <div className="mx-auto max-w-5xl px-6 py-20 text-center">
           <h2 className="text-2xl font-semibold tracking-tight">Get in touch</h2>
@@ -524,6 +549,16 @@ export default function Home() {
           © {new Date().getFullYear()} En Mascaradores.
         </div>
       </footer>
+
+      {teamRosterOpen && !selectedMember && (
+        <TeamRosterModal
+          onSelectMember={(member) => {
+            setTeamRosterOpen(false);
+            setSelectedMember(member);
+          }}
+          onClose={() => setTeamRosterOpen(false)}
+        />
+      )}
 
       {selectedMember && (
         <TeamMemberModal
