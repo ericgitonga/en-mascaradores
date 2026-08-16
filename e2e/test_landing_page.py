@@ -8,6 +8,7 @@ SECTION_HEADINGS = {
     "services": "Our services",
     "partners": "Our partners",
     "hours": "Working hours",
+    "team": "Meet the team",
     "contact": "Get in touch",
 }
 
@@ -22,24 +23,6 @@ def test_index_loads():
         heading = page.locator("h1")
         assert heading.is_visible()
         assert "Skip the garage" in heading.inner_text()
-
-
-def test_team_section_not_on_page():
-    with browser_page() as page:
-        page.goto("/")
-        assert page.locator("#team").count() == 0
-        assert page.get_by_role("heading", name="Meet the team").count() == 0
-
-
-def test_who_we_are_nav_opens_team_roster():
-    with browser_page() as page:
-        page.goto("/")
-        page.get_by_role("button", name="Who we are").click()
-
-        modal = page.get_by_role("dialog")
-        assert modal.is_visible()
-        assert modal.get_by_role("heading", name="Meet the team").is_visible()
-        assert modal.get_by_role("button", name="Herb", exact=False).is_visible()
 
 
 def test_all_sections_render():
@@ -69,8 +52,6 @@ def test_footer_copyright():
 TESTS = [
     test_index_loads,
     test_all_sections_render,
-    test_team_section_not_on_page,
-    test_who_we_are_nav_opens_team_roster,
     test_working_days_listed,
     test_footer_copyright,
 ]

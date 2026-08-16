@@ -11,13 +11,14 @@ behaviour, PATCH = fixes/docs/housekeeping).
 ### Changed
 - Rewrote the hero headline/subhead to speak directly to the target customer's actual pain
   point — avoiding the garage because of the hassle involved (queuing, losing a chunk of a
-  day, being talked over) — rather than the team's own white-collar/blue-collar backstory
-  (closes #38)
+  day, being talked over) — rather than the team's own white-collar/blue-collar backstory,
+  and dropped the hero eyebrow tagline (closes #38)
 - Reordered the page so "Our services" and "Our partners" sit high on the page, right after
-  the hero, ahead of working hours and contact (closes #38)
-- Moved "Meet the team" out of the main scroll and behind a "Who we are" link in the header
-  nav, which opens the full roster in a modal; clicking a member still opens their existing
-  detail modal (closes #38)
+  the hero, ahead of working hours; "Meet the team" now sits at the bottom, just above
+  "Get in touch" (closes #38)
+- Team cards are now compact, showing only each member's codename (full bio still opens in
+  the existing detail modal on click); partner cards now share the same uniform card size
+  as team cards, replacing the old variable-width logo row (closes #38)
 
 tag: `v0.9.0`
 

@@ -159,12 +159,10 @@ function Modal({
   label,
   onClose,
   children,
-  widthClassName = "max-w-lg",
 }: {
   label: string;
   onClose: () => void;
   children: React.ReactNode;
-  widthClassName?: string;
 }) {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -183,7 +181,7 @@ function Modal({
         role="dialog"
         aria-modal="true"
         aria-label={label}
-        className={`relative max-h-[85vh] w-full ${widthClassName} overflow-y-auto rounded-lg bg-white p-6 shadow-xl`}
+        className="relative max-h-[85vh] w-full max-w-lg overflow-y-auto rounded-lg bg-white p-6 shadow-xl"
         onClick={(event) => event.stopPropagation()}
       >
         <button
@@ -223,33 +221,6 @@ function TeamMemberModal({
           </p>
         );
       })}
-    </Modal>
-  );
-}
-
-function TeamRosterModal({
-  onSelectMember,
-  onClose,
-}: {
-  onSelectMember: (member: TeamMember) => void;
-  onClose: () => void;
-}) {
-  return (
-    <Modal label="Meet the team" onClose={onClose} widthClassName="max-w-2xl">
-      <h3 className="text-lg font-semibold text-slate-900">Meet the team</h3>
-      <div className="space-y-4">
-        {TEAM.map((member) => (
-          <button
-            key={member.codename}
-            type="button"
-            onClick={() => onSelectMember(member)}
-            className="block w-full rounded-lg border border-slate-200 p-4 text-left transition-colors hover:border-slate-300 hover:bg-slate-50"
-          >
-            <h4 className="text-base font-semibold text-slate-900">{member.codename}</h4>
-            <p className="mt-1 text-sm leading-6 text-slate-600">{member.bio}</p>
-          </button>
-        ))}
-      </div>
     </Modal>
   );
 }
@@ -389,8 +360,6 @@ function PartnerModal({
 export default function Home() {
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
   const [selectedPartner, setSelectedPartner] = useState<Partner | null>(null);
-  const [teamRosterOpen, setTeamRosterOpen] = useState(false);
-
   return (
     <div className="flex flex-col flex-1 font-sans">
       <header className="bg-slate-900 text-white">
@@ -403,13 +372,9 @@ export default function Home() {
             <a href="#partners" className="hidden text-sm font-medium text-slate-300 hover:text-white sm:inline">
               Partners
             </a>
-            <button
-              type="button"
-              onClick={() => setTeamRosterOpen(true)}
-              className="hidden text-sm font-medium text-slate-300 hover:text-white sm:inline"
-            >
-              Who we are
-            </button>
+            <a href="#team" className="hidden text-sm font-medium text-slate-300 hover:text-white sm:inline">
+              Team
+            </a>
             <a
               href="#contact"
               className="rounded-full bg-amber-500 px-4 py-2 text-sm font-medium text-slate-900 transition-colors hover:bg-amber-400"
@@ -430,10 +395,7 @@ export default function Home() {
             className="shrink-0"
           />
           <div>
-            <p className="text-sm font-semibold uppercase tracking-wide text-amber-400">
-              Car care without the garage runaround
-            </p>
-            <h1 className="mt-3 max-w-2xl text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
+            <h1 className="max-w-2xl text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
               Skip the garage. We&apos;ll come to you.
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-8 text-slate-300">
@@ -478,13 +440,13 @@ export default function Home() {
             accessories to service parts. They have proven to deliver in
             terms of quality and that is why we work with them.
           </p>
-          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
+          <div className="mt-8 grid gap-4 sm:grid-cols-3 lg:grid-cols-4">
             {PARTNERS.map((partner) => (
               <button
                 key={partner.name}
                 type="button"
                 onClick={() => setSelectedPartner(partner)}
-                className="rounded-lg px-4 py-3 transition-colors hover:bg-white hover:shadow-sm"
+                className="flex min-h-[88px] items-center justify-center rounded-lg border border-slate-200 bg-white p-4 text-center transition-colors hover:border-slate-300 hover:bg-slate-100"
               >
                 {partner.logoSrc ? (
                   <Image
@@ -492,7 +454,7 @@ export default function Home() {
                     alt={partner.name}
                     width={partner.logoWidth ?? 127}
                     height={partner.logoHeight ?? 32}
-                    className="h-8 w-auto"
+                    className="h-10 w-auto max-w-full object-contain"
                   />
                 ) : (
                   <span className="text-base font-medium text-slate-700">
@@ -529,6 +491,28 @@ export default function Home() {
         </div>
       </section>
 
+      <section id="team" className="bg-slate-50">
+        <div className="mx-auto max-w-5xl px-6 py-20">
+          <h2 className="text-2xl font-semibold tracking-tight text-slate-900">
+            Meet the team
+          </h2>
+          <div className="mt-10 grid gap-4 sm:grid-cols-3 lg:grid-cols-4">
+            {TEAM.map((member) => (
+              <button
+                key={member.codename}
+                type="button"
+                onClick={() => setSelectedMember(member)}
+                className="flex min-h-[88px] items-center justify-center rounded-lg border border-slate-200 bg-white p-4 text-center transition-colors hover:border-slate-300 hover:bg-slate-100"
+              >
+                <span className="text-base font-semibold text-slate-900">
+                  {member.codename}
+                </span>
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section id="contact" className="bg-slate-900 text-white">
         <div className="mx-auto max-w-5xl px-6 py-20 text-center">
           <h2 className="text-2xl font-semibold tracking-tight">Get in touch</h2>
@@ -549,16 +533,6 @@ export default function Home() {
           © {new Date().getFullYear()} En Mascaradores.
         </div>
       </footer>
-
-      {teamRosterOpen && !selectedMember && (
-        <TeamRosterModal
-          onSelectMember={(member) => {
-            setTeamRosterOpen(false);
-            setSelectedMember(member);
-          }}
-          onClose={() => setTeamRosterOpen(false)}
-        />
-      )}
 
       {selectedMember && (
         <TeamMemberModal
