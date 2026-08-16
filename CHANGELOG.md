@@ -9,10 +9,10 @@ behaviour, PATCH = fixes/docs/housekeeping).
 ## [0.9.0] - 2026-08-16
 
 ### Changed
-- Rewrote the hero headline/subhead to speak directly to the target customer's actual pain
-  point — avoiding the garage because of the hassle involved (queuing, losing a chunk of a
-  day, being talked over) — rather than the team's own white-collar/blue-collar backstory,
-  and dropped the hero eyebrow tagline (closes #38)
+- Rewrote the hero headline/subhead/tagline to speak directly to the target customer's
+  actual pain point — avoiding the garage because of the hassle involved (queuing, losing a
+  chunk of a day, being talked over) — rather than the team's own white-collar/blue-collar
+  backstory (closes #38)
 - Reordered the page so "Our services" and "Our partners" sit high on the page, right after
   the hero, ahead of working hours; "Meet the team" now sits at the bottom, just above
   "Get in touch" (closes #38)

@@ -395,7 +395,10 @@ export default function Home() {
             className="shrink-0"
           />
           <div>
-            <h1 className="max-w-2xl text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
+            <p className="text-sm font-semibold uppercase tracking-wide text-amber-400">
+              Car care without the garage runaround
+            </p>
+            <h1 className="mt-3 max-w-2xl text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
               Skip the garage. We&apos;ll come to you.
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-8 text-slate-300">
